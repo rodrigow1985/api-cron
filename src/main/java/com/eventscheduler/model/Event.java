@@ -1,5 +1,10 @@
-import javax.persistence.*;
 import java.time.LocalDateTime;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import org.springframework.data.annotation.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="event")
@@ -15,25 +20,31 @@ public class Event {
     private String app;
     
     @Column(name="time")
-    private LocalDateTime eventTime;  // La hora en la que debe ser disparado el evento
+    private LocalDateTime time;  // La hora en la que debe ser disparado el evento
 
     // Getters y setters
     public Long getId() {
         return this.id;
     }
-    public Long getCode() {
-        return this.Code;
+    public String getCode() {
+        return this.code;
     }
-    public Long getTime() {
+    public String getApp() {
+        return this.app;
+    }
+    public LocalDateTime getTime() {
         return this.time;
     }
-    public Long setId(id) {
-        this.id = Long id;
+    public void setId(Long id) {
+        this.id = id;
     }
-    public Long setCode(code) {
-        this.code = Long code;
+    public void setCode(String code) {
+        this.code = code;
     }
-    public Long setId(time) {
-        this.time = Long time;
+    public void setApp(String app) {
+        this.app = app;
+    }
+    public void setTime(LocalDateTime time) {
+        this.time = time;
     }
 }

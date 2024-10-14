@@ -1,6 +1,6 @@
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 
 @RestController
@@ -11,8 +11,8 @@ public class EventController {
     private EventRepository eventRepository;
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userRepository.findById(id).get();
+    public Event getEventById(@PathVariable Long id) {
+        return eventRepository.findById(id).get();
     }
 
     /* TODO */
@@ -22,11 +22,11 @@ public class EventController {
     }*/
 
     @PostMapping
-    public Event createEvent(@RequestParam String code, @RequestParam String app, @RequestParam String time) {
+    public Event createEvent(@RequestParam String code, @RequestParam String app, @RequestParam LocalDateTime time) {
         Event event = new Event();
         event.setCode(code);
         event.setApp(app);
-        event.setTime(LocalDateTime.parse(time));  // Asegúrate de enviar el tiempo en el formato correcto
+        event.setTime(time);  // Asegúrate de enviar el tiempo en el formato correcto
         return eventRepository.save(event);
     }
 }

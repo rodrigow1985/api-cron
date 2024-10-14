@@ -19,7 +19,7 @@ public class EventScheduler {
         List<Event> events = eventRepository.findByEventTimeBefore(LocalDateTime.now());
 
         for (Event event : events) {
-            kafkaMessageSender.sendMessage("Evento disparado: " + event.getEventName());
+            kafkaMessageSender.sendMessage("Evento disparado: " + event.getCode());
             eventRepository.delete(event);  // Elimina el evento después de dispararlo
         }
     }
